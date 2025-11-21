@@ -1,3 +1,3 @@
-# xName-Project
+# KUROZA-SEC Team Project
 
 ### Stay tuned!
