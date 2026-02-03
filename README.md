@@ -1,3 +1,5 @@
+# 🕵️‍♂️ ScannerLogic (Modular Port & Service Scanner)
+
 *ScannerLogic* is a professional-grade, multi-threaded network security tool designed for rapid port discovery, service identification (Banner Grabbing), and OS fingerprinting. Built with a modular Python architecture, it offers high performance and clean, readable output for security professionals and enthusiasts.
 
 ---
@@ -20,8 +22,8 @@ Ensure you have *Python 3.x* installed on your system.
 
 ### 2. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/NetworkSherlock.git](https://github.com/your-username/NetworkSherlock.git)
-cd NetworkSherlock
+git clone [https://github.com/your-username/ScannerLogic.git](https://github.com/your-username/ScannerLogic.git)
+cd ScannerLogic
 
 3. Install Dependencies
 Install the required Python libraries:
@@ -31,6 +33,13 @@ pip install colorama scapy pyfiglet
 🐧 For Linux (Kali, Ubuntu, etc.)
 To use the OS Detection feature, you must run the script with sudo because scapy requires root privileges to send/receive raw ICMP packets.
 sudo python3 scannerLogic.py <target_ip> -p 1-1000 -t 200 -o report.txt
+
+🪟 For Windows
+ * Open PowerShell or Command Prompt as Administrator.
+ * Install Npcap (required by scapy for packet manipulation). You can download it from npcap.com.
+ * Run the scanner:
+<!-- end list -->
+python scannerLogic.py <target_ip> -p 1-1000 -t 200 -o report.txt
 
 📖 Usage Guide
 | Argument | Description | Default |
@@ -43,7 +52,7 @@ Example Command:
 sudo python3 scannerLogic.py 10.10.10.5 -p 21,22,80,445 -t 50 -o my_scan.txt
 
 📁 File Structure
-NetworkSherlock/
+ScannerLogic/
 ├── scannerLogic.py   # Main engine and entry point
 ├── network_utils.py  # Network functions (Banner/OS Detection)
 ├── ui_reporter.py    # Terminal UI and reporting logic
