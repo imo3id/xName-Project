@@ -39,12 +39,12 @@ captured_packets = []
 ip_counter=Counter()
 
 
-def get_packet_info(pkt):
+def get_packet_info(pkt):#22
     """ دالة بسيطة لاستخراج المعلومات الأساسية من الحزمة """
     src_ip = pkt[IP].src if IP in pkt else "-"
     dst_ip = pkt[IP].dst if IP in pkt else "-"
-    proto = "Other"
 
+    proto = "Other"
     if TCP in pkt:
         proto = "TCP"
     elif UDP in pkt:
@@ -72,8 +72,6 @@ def start_sniffing():
         scapy_filter = "tcp"
     elif selected_filter == "UDP":
         scapy_filter = "udp"
-    elif selected_filter == "ICMP":
-        scapy_filter = "icmp"
 
     t = threading.Thread(target=process_packets, args=(interface, scapy_filter))
     t.daemon = True
@@ -97,14 +95,14 @@ def process_packets(iface, s_filter):
         update_stats(proto)
 
     sniff(iface=iface, prn=packet_callback, filter=s_filter, stop_filter=lambda x: stop_sniffing_event)
-def stop_capture():
+def stop_capture():#22
     global stop_sniffing_event
     stop_sniffing_event = True
     start_btn.config(state="normal")
     stop_btn.config(state="disabled")
 
 
-def export_pcap():
+def export_pcap():#22
     if not captured_packets:
         messagebox.showwarning("Alert", "No Packets to export")
         return
@@ -142,7 +140,7 @@ def run_sniffer_ui():
     iface_box.pack(side="left", padx=5)
 
     tk.Label(top_frame, text="Filter:").pack(side="left", padx=5)
-    filter_box = ttk.Combobox(top_frame, values=["ALL", "TCP", "UDP", "ICMP"], width=10)
+    filter_box = ttk.Combobox(top_frame, values=["ALL", "TCP", "UDP"], width=10)
     filter_box.current(0)
     filter_box.pack(side="left", padx=5)
 

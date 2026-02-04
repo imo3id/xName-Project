@@ -34,7 +34,7 @@ class ScannerLogic:
         except: pass
 
     def run(self):
-        os_info = network_utils.detect_os_by_ttl(self.args.target)
+        os_info = network_utils.detect_os(self.args.target)
         ui_reporter.print_header(self.args.target, os_info, self.args.threads)
         start_time = time.time()
         with ThreadPoolExecutor(max_workers=self.args.threads) as executor:
