@@ -93,7 +93,7 @@ def process_packets(iface, s_filter):
         if src != "-":
             ip_counter[src] += 1
 
-        table.insert("", "end", values=(src, dst, proto, length))
+        table.insert("", "0", values=(src, dst, proto, length))
         update_stats(proto)
 
     sniff(iface=iface, prn=packet_callback, filter=s_filter, stop_filter=lambda x: stop_sniffing_event)
